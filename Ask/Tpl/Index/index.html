@@ -1,73 +1,57 @@
+<!DOCTYPE html>
 <html>
-    <head>  <meta http-equiv="Content-Type" content="text/html";charset="UTF-8">
-    <style> 
-    .bor{border:1px dashed #F00;width:400px;height:60px;margin-top:10px;margin-left:25%;} 
-    </style>
-    <title>Online exam</title> 
-    </head>
-<body bgcolor="#FFE6CC">
-	<p align="center"><img src="title_1.png"></p>
-	<form name="admin" action="process.php" method="post" style="margin-bottom:5px;">
-	  <table width="450" border="0" align="left" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">  
-    	<tr align = "left">
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	please input the id of question: 
-        	</strong></td>
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	<input name= "<?php echo 'vote'.'0' ?>" type ='text' value='question id' size = '12'>
-        	<input name = 'okid' type = 'button' value = 'OK'>
-        	</strong></td>
+<head>
+<meta charset="UTF-8">
+<title>答题赢积分</title>
+<script type="text/javascript">
+	 function check()
+	 {
+  		node=frm.vote;
+  		flag=false;
+	 	 for(i=0;i<node.length;i++)
+		 {
+			 if(node[i].checked)
+		   {
+			   	flag=true;
+			 }
+		 }
+		if(!flag)
+		{
+			alert("您还没有答完!")
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+<h2>答题赢积分</h2>
 
-    	</tr>   
-    	<tr align = "left">
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	please input the title of question: 
-        	</strong></td>
-        	<td height="70" weight='400' align="left" bgcolor="#F0F000"><strong>
-        	<input name= "<?php echo 'vote'.'1' ?>" type ='text' value='question title' size = '32' maxlength='2000'>
-        	<input name = 'oktitle' type = 'button' value = 'OK'>
-        	</strong></td>
-    	</tr> 
-    	<tr align = "left">
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	please input A answer: 
-        	</strong></td>
-        	<td height="70" weight='400' align="left" bgcolor="#F0F000"><strong>
-        	<input name= "<?php echo 'vote'.'2' ?>" type ='text' value='question title' size = '32' maxlength='2000'>
-        	<input name = 'okA' type = 'button' value = 'OK'>
-        	</strong></td>
-    	</tr> 
-    	<tr align = "left">
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	please input B answer: 
-        	</strong></td>
-        	<td height="70" weight='400' align="left" bgcolor="#F0F000"><strong>
-        	<input name= "<?php echo 'vote'.'3' ?>" type ='text' value='question title' size = '32' maxlength='2000'>
-        	<input name = 'okB' type = 'button' value = 'OK'>
-        	</strong></td>
-    	</tr> 
-    	<tr align = "left">
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	please input C answer: 
-        	</strong></td>
-        	<td height="70" weight='400' align="left" bgcolor="#F0F000"><strong>
-        	<input name= "<?php echo 'vote'.'4' ?>" type ='text' value='question title' size = '32' maxlength='2000'>
-        	<input name = 'okC' type = 'button' value = 'OK'>
-        	</strong></td>
-    	</tr> 
-    	<tr align = "left">
-        	<td height="50" align="left" bgcolor="#F0F000"><strong>
-        	please input D answer: 
-        	</strong></td>
-        	<td height="70" weight='400' align="left" bgcolor="#F0F000"><strong>
-        	<input name= "<?php echo 'vote'.'5' ?>" type ='text' value='question title' size = '32' maxlength='2000'>
-        	<input name = 'okD' type = 'button' value = 'OK'>
-        	</strong></td>
-        	<input type='submit' name='Submit' value="submit">
-    	</tr> 
-       </table>
-  </form> 
-
+	<form method='post' action="__URL__/process">
+	<table width="450" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">
+	
+	<for start="0" end="$num" comparison="lt" >		
+         <tr><td height="30" align="left" bgcolor="#F0F000">{$i+1}题目：{$da[$i]['title']}</td>       	
+            </tr>
+         <tr><td align="left" height="30" bgcolor="#FFFFFF">A:
+            <input type="radio" class='radio' name="<?php echo 'vote'.$i ?>" value="1"> 
+         	</td></tr>
+		 <tr><td height="30" bgcolor="#FFFFFF">B: 
+		 	<input type="radio" class='radio' name="<?php echo 'vote'.$i ?>" value="2">
+		 	</td></tr>
+		 <tr><td height="30" bgcolor="#FFFFFF">C: 
+		  	<input type="radio" class='radio' name="<?php echo 'vote'.$i ?>" value="3">
+		  	</td></tr>
+		 <tr><td height="30" bgcolor="#FFFFFF">D: 
+		  	<input type="radio" class='radio' name="<?php echo 'vote'.$i ?>" value="4">
+		  	</td></tr>
+	</for>
+	
+	     <tr><td><input type="submit" class="button" value="提 交" onClick="javascript:return check()">
+		     <input type="reset" class="button" value="清 空"></td>
+     	 </tr>
+    </table>
+	</form>
+	
 
 </body>
 </html>
