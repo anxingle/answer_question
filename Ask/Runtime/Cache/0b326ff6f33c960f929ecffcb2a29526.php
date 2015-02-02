@@ -29,7 +29,7 @@
 	<form method='post' action="__URL__/process">
 	<table width="450" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">
 	
-	<?php $__FOR_START_16829__=0;$__FOR_END_16829__=$num;for($i=$__FOR_START_16829__;$i < $__FOR_END_16829__;$i+=1){ ?><tr><td height="30" align="left" bgcolor="#F0F000"><?php echo ($i+1); ?>题目：<?php echo ($da[$i]['title']); ?></td>       	
+	<?php $__FOR_START_17550__=0;$__FOR_END_17550__=$num;for($i=$__FOR_START_17550__;$i < $__FOR_END_17550__;$i+=1){ ?><tr><td height="30" align="left" bgcolor="#F0F000"><?php echo ($i+1); ?>题目：<?php echo ($da[$i]['title']); ?></td>       	
             </tr>
          <tr><td align="left" height="30" bgcolor="#FFFFFF">A:
             <input type="radio" class='radio' name="<?php echo 'vote'.$i ?>" value="1"> 
@@ -44,7 +44,7 @@
 		  	<input type="radio" class='radio' name="<?php echo 'vote'.$i ?>" value="4">
 		  	</td></tr><?php } ?>
 	
-	     <tr><td><input type="submit" class="button" value="提 交" onClick="javascript:return check();">
+	     <tr><td><input type="submit" class="button" value="提 交" onClick="javascript:return check()">
 		     <input type="reset" class="button" value="清 空"></td>
      	 </tr>
     </table>

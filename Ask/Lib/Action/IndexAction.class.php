@@ -2,16 +2,22 @@
 
 class IndexAction extends Action {
     public function index(){
+       header("Content-Type:text/html;charset=utf-8");
+       session_start();
+       if(isset($_SESSION['userName'])==false){
        $ge_title = new userModel();
        $num = $ge_title->count();
        //This is get the total of problems
        $this->assign('num',$num);
        
        $da = $ge_title->select();
-       
-       
+      
        $this->assign('num',$num)->assign('da',$da)->assign('k',0);
        $this->display();
+        }else{
+            
+           echo '请登录' ; die; 
+        }
     }
     // 处理表单数据
     public function process() {
@@ -51,4 +57,5 @@ class IndexAction extends Action {
          $this->display('admin');
          //for   title title_id answer_A answer_B answer_C answer_D answer_r
      }
+   
 }
